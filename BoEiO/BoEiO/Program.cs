@@ -10,6 +10,7 @@ namespace BoEiO
     {
         static void Main(string[] args)
         {
+            Console.ReadKey();
         }
     }
 }
