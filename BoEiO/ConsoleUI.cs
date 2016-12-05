@@ -2,7 +2,7 @@
 
 public class ConsoleUI
 {
-    //--MENU--//
+    //--MENU UI--//
     public int Menu(string[] items, ConsoleColor fontColor, ConsoleColor backColor, bool repeatable, int posX, int posY)
     {
         bool enter = false;
@@ -59,6 +59,32 @@ public class ConsoleUI
 
         return index;       // ==> Návratová hodnota je index výběru
 
+    }
+    //--END--//
+
+    //--Progress Bar UI--//
+    public void ProgressBar(int x, int y, int width, int value)
+    {
+        float nmb = ((width - 2) / 100F) * value;
+        //--Create template sides--//
+        Console.SetCursorPosition(x, y);
+        Console.Write("|");
+        Console.SetCursorPosition(x + width - 1, y);
+        Console.Write("|");
+        //--END--//
+
+        //--Create Progress Line--//
+        for (int i = 0; i <= width - 3; i++)
+        {
+            Console.SetCursorPosition(x + i + 1, y);
+            if (i < nmb)
+                Console.BackgroundColor = ConsoleColor.Gray;
+            else
+                Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write(" ");
+        }
+        Console.ResetColor();
+        //--END--//
     }
     //--END--//
 }
