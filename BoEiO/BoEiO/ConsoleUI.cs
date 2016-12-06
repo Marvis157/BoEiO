@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 public class ConsoleUI
 {
@@ -9,6 +10,7 @@ public class ConsoleUI
         int itemPos = 0;
         int index = 0;
 
+        hideCursor();
         //Smaže a následně přepíše konzoly po změně výběru
         Console.Clear();
         //Menu se vypisuje dokud není výběr uskutečněn
@@ -65,6 +67,7 @@ public class ConsoleUI
     //--Progress Bar UI--//
     public void ProgressBar(int x, int y, int width, int value)
     {
+        hideCursor();
         float nmb = ((width - 2) / 100F) * value;
         //--Create template sides--//
         Console.SetCursorPosition(x, y);
@@ -87,4 +90,76 @@ public class ConsoleUI
         //--END--//
     }
     //--END--//
+
+    //--Starting Screen UI--//
+    public void StartingScreen(string appName, string author, string startingMessage, int timer)
+    {
+        int maxWidth = Console.BufferWidth;
+        int maxHeight = Console.WindowHeight;
+
+        hideCursor();
+        //--CREATE FIRST LINE--//
+        for(int i = 0; i < maxWidth;i++)
+        {
+            Console.SetCursorPosition(i, 0);
+            Console.Write("#");
+            Console.SetCursorPosition(i, 20);
+            Console.Write("#");
+            Console.SetCursorPosition(i, maxHeight-1);
+            Console.Write("#");
+        }
+
+        //--CREATE COLLUMNS FIRST AND LAST--//
+        for(int i = 0; i < maxHeight;i++)
+        {
+            Console.SetCursorPosition(0, i);
+            Console.Write("#");
+            Console.SetCursorPosition(maxWidth-1, i);
+            Console.Write("#");
+
+            if (i < 20)
+            {
+                Console.SetCursorPosition((maxWidth / 2) - (appName.Length / 2) - 5, i);
+                Console.Write("#");
+                Console.SetCursorPosition((maxWidth / 2) + (appName.Length / 2) + 5, i);
+                Console.Write("#");
+            }
+
+            ResetCursor();
+        }
+
+        //--Write APP Name--//
+        Console.SetCursorPosition((maxWidth/2)-(appName.Length/2),3);
+        Console.Write(appName);
+
+        //--Write Athor Name--//
+        Console.SetCursorPosition((maxWidth/2)-(author.Length/2),5);
+        Console.Write(author);
+
+        //--Write Startig Message--//
+        Console.SetCursorPosition((maxWidth / 2) - (startingMessage.Length / 2), 22);
+        Console.Write(startingMessage);
+
+        //--TIMER--//
+        Thread.Sleep(timer*1000);
+        //--END--//
+    }
+    //--END--//
+
+    private void ResetCursor()
+    {
+        int maxWidth = Console.BufferWidth;
+        Console.SetCursorPosition(maxWidth-1,0);
+        Console.Write("#");
+    }
+
+    private void hideCursor()
+    {
+        Console.CursorVisible = false;
+    }
+
+    private void showCursor()
+    {
+        Console.CursorVisible = true;
+    }
 }
