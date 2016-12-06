@@ -96,6 +96,9 @@ public class ConsoleUI
     {
         int maxWidth = Console.BufferWidth;
         int maxHeight = Console.WindowHeight;
+        int mostWidth = appName.Length;
+        if (mostWidth < author.Length)
+            mostWidth = author.Length;
 
         hideCursor();
         //--CREATE FIRST LINE--//
@@ -119,9 +122,9 @@ public class ConsoleUI
 
             if (i < 20)
             {
-                Console.SetCursorPosition((maxWidth / 2) - (appName.Length / 2) - 5, i);
+                Console.SetCursorPosition((maxWidth / 2) - (mostWidth / 2) - 5, i);
                 Console.Write("#");
-                Console.SetCursorPosition((maxWidth / 2) + (appName.Length / 2) + 5, i);
+                Console.SetCursorPosition((maxWidth / 2) + (mostWidth / 2) + 5, i);
                 Console.Write("#");
             }
 
