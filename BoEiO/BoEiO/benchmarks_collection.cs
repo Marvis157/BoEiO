@@ -17,9 +17,12 @@ namespace BoEiO
             speedTicks = speedT;
         }
 
-        public void benchCPU()
+        public void benchCPU(int input)
         {
+            if (input < speedTicks)
+                benchCPU(input+1);
 
+            Console.WriteLine("Input: {0}",input);
         }
 
         public void benchHDD()
