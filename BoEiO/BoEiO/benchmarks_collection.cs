@@ -10,6 +10,7 @@ namespace BoEiO
     {
         //--VARIABLES--//
         int speedTicks;
+        int fixTick = 0;
 
         //--KONSTRUKTOR--//
         public benchmarks_collection(int speedT)
@@ -19,10 +20,18 @@ namespace BoEiO
 
         public void benchCPU(int input)
         {
-            if (input < speedTicks)
-                benchCPU(input+1);
+            /*while (true)
+            {
+                if (input < speedTicks)
+                {
+                    for(int diff = 0; diff < speedTicks; diff++)
+                        benchCPU(input + 1);
+                }  
+                //Console.WriteLine("Loop: {0}", fixTick);
+                fixTick++;
+            }*/
 
-            Console.WriteLine("Input: {0}",input);
+            //Start another benchmark
         }
 
         public void benchHDD()
