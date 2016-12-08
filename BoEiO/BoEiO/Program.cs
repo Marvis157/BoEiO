@@ -7,10 +7,7 @@ namespace BoEiO
         static void Main(string[] args)
         {
             ConsoleUI cnsl = new ConsoleUI();
-            benchmarks_collection bnch;
-
-            //--VARIABLES--//
-            int speedTick = 1000;
+            benchmarks_collection bnch = new benchmarks_collection();
 
             //--Starting Screen--//
             cnsl.StartingScreen("Benchmark Of Everything In One", "Marek Kubicka", "Welcome, try some benchmark ans share your points!", 2);
@@ -22,7 +19,6 @@ namespace BoEiO
                 //--CPU--//
                 case 0:
                     cpu:
-                    bnch = new benchmarks_collection(speedTick);
                     switch(cnsl.Menu(new string[] {"Start","Settings","Back"}, ConsoleColor.Black, ConsoleColor.Gray, true, 0, 0))
                     {
                         //--START--//
@@ -34,7 +30,6 @@ namespace BoEiO
 
                         //--SETTINGS--//
                         case 1:
-                            speedTick = setSpeedTick(speedTick);
                             goto cpu;
 
                         //--BACK--//
@@ -46,7 +41,6 @@ namespace BoEiO
                 //--HDD--//
                 case 1:
                     hdd:
-                    bnch = new benchmarks_collection(speedTick);
                     switch (cnsl.Menu(new string[] { "Start", "Settings", "Back" }, ConsoleColor.Black, ConsoleColor.Gray, true, 0, 0))
                     {
                         //--START--//
@@ -56,7 +50,6 @@ namespace BoEiO
 
                         //--SETTINGS--//
                         case 1:
-                            speedTick = setSpeedTick(speedTick);
                             goto hdd;    
 
                         //--BACK--//
@@ -65,15 +58,6 @@ namespace BoEiO
                     }
                     break;
             }
-        }
-
-        static int setSpeedTick(int defaultSpeedTick)
-        {
-            Console.Clear();
-            Console.Write("Set speed tick, now is: {0}\nYour set: ", defaultSpeedTick);
-            defaultSpeedTick = Convert.ToInt32(Console.ReadLine());
-
-            return defaultSpeedTick;
         }
     }
 }

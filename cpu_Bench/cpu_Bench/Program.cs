@@ -14,7 +14,7 @@ namespace cpu_Bench
             float totalTime = 0f;
             int i = 0;
             int totalTicks = 0;
-            float exeTicks = 10000000f;
+            float exeTicks = 50000000f;
 
             //Loop for exeTicks
             while (totalTicks < exeTicks)
@@ -41,7 +41,7 @@ namespace cpu_Bench
         {
             float score = ttlTicks / ttlTime;
             StreamWriter sw = new StreamWriter(core.ToString()+".txt");
-            sw.WriteLine("Core: {0} | Total time: {1} | Total ticks: {2} | Score: {3}",core, ttlTime, ttlTicks, score*100);
+            sw.WriteLine("{0};{1};{2};{3}",core, ttlTime, ttlTicks, score*100);
             sw.Flush();
             sw.Close();
         }
