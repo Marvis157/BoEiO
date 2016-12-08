@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BoEiO
 {
@@ -31,7 +27,9 @@ namespace BoEiO
                     {
                         //--START--//
                         case 0:
-                            bnch.benchCPU(0);
+                            bnch.benchCPU();
+                            Console.WriteLine("Completed...");
+                            Console.ReadKey();
                             break;
 
                         //--SETTINGS--//
@@ -67,7 +65,6 @@ namespace BoEiO
                     }
                     break;
             }
-            Console.ReadKey();
         }
 
         static int setSpeedTick(int defaultSpeedTick)
