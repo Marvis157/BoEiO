@@ -7,6 +7,9 @@ namespace BoEiO
         static void Main(string[] args)
         {
             ConsoleUI cnsl = new ConsoleUI();
+
+            //cnsl.explorer("C:\\");
+
             benchmarks_collection bnch = new benchmarks_collection();
 
             //--Starting Screen--//
@@ -58,6 +61,9 @@ namespace BoEiO
                     }
                     break;
             }
+        
+
+            Console.ReadKey();
         }
     }
 }
